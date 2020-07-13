@@ -4,6 +4,7 @@ import { randomBytes } from 'crypto';
 
 import { runCommandSync } from '../src/utils';
 import { AdditionalOptions } from '../lib/index';
+import mkdirp = require('mkdirp');
 
 export interface Fixture {
   fixtureName: string;
@@ -64,7 +65,7 @@ export class TestBed {
     /**
      * Initialise a .git directory for the fixture
      */
-    runCommandSync('mkdir', ['-p', tmpFile.name], this.TEST_BED_DIRECTORY_PATH);
+    mkdirp.sync(tmpFile.directoryPath);
     runCommandSync('git', ['init'], tmpFile.directoryPath);
     /**
      * Apply the two different file contents to the TmpFile
@@ -79,7 +80,7 @@ export class TestBed {
   private createUniqueDirectoryForTestBed(): void {
     const dir = this.generateUniqueDirectoryName();
     this.TEST_BED_DIRECTORY_PATH = join(TestBed.TMP_DIRECTORY_PATH, dir);
-    runCommandSync('mkdir', [dir], TestBed.TMP_DIRECTORY_PATH);
+    mkdirp.sync(this.TEST_BED_DIRECTORY_PATH);
   }
 
   private generateUniqueDirectoryName(): string {

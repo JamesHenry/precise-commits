@@ -13,26 +13,29 @@
   "license": "MIT",
   "scripts": {
     "test": "npm run build && jest",
-    "build": "rm -rf lib/ && tsc",
+    "build": "rimraf lib/ && tsc",
     "semantic-release": "semantic-release",
     "precommit": "npm test && npm run precise-commits",
     "cz": "git-cz",
-    "precise-commits": "bin/index.js",
+    "precise-commits": "node bin/index.js",
     "travis-deploy-once": "travis-deploy-once"
   },
   "devDependencies": {
     "@types/execa": "^0.8.1",
     "@types/find-up": "^2.1.1",
     "@types/jest": "^22.1.0",
+    "@types/mkdirp": "^1.0.1",
     "@types/prettier": "^1.10.0",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
+    "mkdirp": "0.5.5",
     "prettier": "^1.10.2",
+    "rimraf": "^3.0.2",
     "semantic-release": "^12.2.4",
+    "travis-deploy-once": "^4.3.3",
     "ts-jest": "^22.0.1",
-    "typescript": "^2.6.2",
-    "travis-deploy-once": "^4.3.3"
+    "typescript": "^2.6.2"
   },
   "dependencies": {
     "diff-match-patch": "^1.0.0",

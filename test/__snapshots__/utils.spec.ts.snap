@@ -9,7 +9,43 @@ Array [
 ]
 `;
 
+exports[`utils calculateCharacterRangesFromLineChanges() brand-new-json-file 2`] = `
+Array [
+  Object {
+    "rangeEnd": 21,
+    "rangeStart": 0,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() brand-new-json-file 3`] = `
+Array [
+  Object {
+    "rangeEnd": 19,
+    "rangeStart": 0,
+  },
+]
+`;
+
 exports[`utils calculateCharacterRangesFromLineChanges() brand-new-jsx-file 1`] = `
+Array [
+  Object {
+    "rangeEnd": 661,
+    "rangeStart": 0,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() brand-new-jsx-file 2`] = `
+Array [
+  Object {
+    "rangeEnd": 681,
+    "rangeStart": 0,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() brand-new-jsx-file 3`] = `
 Array [
   Object {
     "rangeEnd": 661,
@@ -27,15 +63,59 @@ Array [
 ]
 `;
 
+exports[`utils calculateCharacterRangesFromLineChanges() empty-javascript-file 2`] = `
+Array [
+  Object {
+    "rangeEnd": 54,
+    "rangeStart": 0,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() empty-javascript-file 3`] = `
+Array [
+  Object {
+    "rangeEnd": 53,
+    "rangeStart": 0,
+  },
+]
+`;
+
 exports[`utils calculateCharacterRangesFromLineChanges() formatting-would-affect-total-line-count 1`] = `
 Array [
   Object {
-    "rangeEnd": 75,
-    "rangeStart": 62,
+    "rangeEnd": 76,
+    "rangeStart": 63,
   },
   Object {
-    "rangeEnd": 130,
-    "rangeStart": 105,
+    "rangeEnd": 131,
+    "rangeStart": 106,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() formatting-would-affect-total-line-count 2`] = `
+Array [
+  Object {
+    "rangeEnd": 82,
+    "rangeStart": 67,
+  },
+  Object {
+    "rangeEnd": 142,
+    "rangeStart": 115,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() formatting-would-affect-total-line-count 3`] = `
+Array [
+  Object {
+    "rangeEnd": 76,
+    "rangeStart": 63,
+  },
+  Object {
+    "rangeEnd": 131,
+    "rangeStart": 106,
   },
 ]
 `;
@@ -43,12 +123,38 @@ Array [
 exports[`utils calculateCharacterRangesFromLineChanges() multiple-updated-lines-javascript-file 1`] = `
 Array [
   Object {
-    "rangeEnd": 127,
-    "rangeStart": 32,
+    "rangeEnd": 128,
+    "rangeStart": 33,
   },
   Object {
     "rangeEnd": 171,
-    "rangeStart": 133,
+    "rangeStart": 134,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() multiple-updated-lines-javascript-file 2`] = `
+Array [
+  Object {
+    "rangeEnd": 130,
+    "rangeStart": 34,
+  },
+  Object {
+    "rangeEnd": 176,
+    "rangeStart": 139,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() multiple-updated-lines-javascript-file 3`] = `
+Array [
+  Object {
+    "rangeEnd": 128,
+    "rangeStart": 33,
+  },
+  Object {
+    "rangeEnd": 171,
+    "rangeStart": 134,
   },
 ]
 `;
@@ -57,7 +163,25 @@ exports[`utils calculateCharacterRangesFromLineChanges() single-updated-line-typ
 Array [
   Object {
     "rangeEnd": 29,
-    "rangeStart": 14,
+    "rangeStart": 15,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() single-updated-line-typescript 2`] = `
+Array [
+  Object {
+    "rangeEnd": 30,
+    "rangeStart": 16,
+  },
+]
+`;
+
+exports[`utils calculateCharacterRangesFromLineChanges() single-updated-line-typescript 3`] = `
+Array [
+  Object {
+    "rangeEnd": 29,
+    "rangeStart": 15,
   },
 ]
 `;

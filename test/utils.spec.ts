@@ -11,6 +11,26 @@ import {
 const fixtures = readFixtures();
 let testBed: TestBed;
 
+interface LineSeparator {
+  name: string;
+  convert: (text: string) => string;
+}
+
+const lf: LineSeparator = {
+  name: 'LF',
+  convert: text => text.replace(/\r?\n|\r/g, '\n'),
+};
+
+const crlf: LineSeparator = {
+  name: 'CRLF',
+  convert: text => text.replace(/\r?\n|\r/g, '\r\n'),
+};
+
+const cr: LineSeparator = {
+  name: 'CR',
+  convert: text => text.replace(/\r?\n|\r/g, '\r'),
+};
+
 describe('utils', () => {
   describe('extractLineChangeData()', () => {
     beforeAll(() => {
@@ -49,11 +69,10 @@ describe('utils', () => {
           tmpFile.updatedCommitSHA,
         );
         const lineChangeData = extractLineChangeData(diff);
-        const characterRanges = calculateCharacterRangesFromLineChanges(
-          lineChangeData,
-          fixture.stagedContents,
-        );
-        expect(characterRanges).toMatchSnapshot();
+        [lf, crlf, cr].forEach(lineSeparator => {
+          const characterRanges = calculateCharacterRangesFromLineChanges(lineChangeData, lineSeparator.convert(fixture.stagedContents));
+          expect(characterRanges).toMatchSnapshot();
+        });
       });
     });
   });

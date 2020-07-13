@@ -1,6 +1,6 @@
-const execa = require('execa');
+const rimraf = require("rimraf");
 
 /**
  * Destroy the tmp directory that was created in global-setup.js
  */
-module.exports = () => execa.sync('rm', ['-rf', './tmp']);
+module.exports = () => rimraf.sync("tmp");

@@ -57,39 +57,39 @@ export function extractLineChangeData(diffData: string) {
   return lineChangeData;
 }
 
-function getTextBeforeLineIndex(linesInFile: string[], index: number): string {
-  return linesInFile.slice(0, index).join('\n');
+function findCharacterIndexOfLine(
+  fileContents: string,
+  startCharIndex: number,
+  lineCount: number,
+): number {
+  let charIndex = startCharIndex;
+  let lineIndex = 0;
+  while (lineIndex < lineCount && charIndex < fileContents.length) {
+    const char = fileContents[charIndex];
+    const nextChar = fileContents[charIndex + 1];
+    if (char === '\n' || char === '\r') {
+      ++lineIndex;
+      if (char === '\r' && nextChar === '\n') {
+        ++charIndex; // skip next character
+      }
+    }
+    ++charIndex;
+  }
+  return charIndex;
 }
 
 export function calculateCharacterRangesFromLineChanges(
   lineChangeData: LineChangeData,
   fileContents: string,
 ): CharacterRange[] {
-  const linesInFile = fileContents.split('\n');
+  let charIndex = 0;
+  let lineIndex = 0;
   return lineChangeData.additions.map(added => {
-    /**
-     * Calculate the character to start at
-     */
-    const startLineNumberIndex = added.start - 1;
-    const textBeforeStartOfStartLine = getTextBeforeLineIndex(
-      linesInFile,
-      startLineNumberIndex,
-    );
-    const rangeStart = textBeforeStartOfStartLine.length;
-    /**
-     * Calculate the character to end at
-     */
-    const endLineNumberIndex = startLineNumberIndex + added.noOfLines - 1;
-    const textBeforeEndOfEndLine = getTextBeforeLineIndex(
-      linesInFile,
-      endLineNumberIndex + 1,
-    );
-    const rangeEnd = textBeforeEndOfEndLine.length;
-
-    return {
-      rangeStart,
-      rangeEnd,
-    };
+    const rangeStart = findCharacterIndexOfLine(fileContents, charIndex, added.start - lineIndex - 1);
+    const rangeEnd = findCharacterIndexOfLine(fileContents, rangeStart, added.noOfLines);
+    charIndex = rangeEnd;
+    lineIndex = added.start + added.noOfLines - 1;
+    return { rangeStart, rangeEnd };
   });
 }
 
